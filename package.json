@@ -2,7 +2,7 @@
     "name": "discover-fe",
     "version": "0.1.0",
     "private": true,
-    "proxy": "http://127.0.0.1:3001",
+    "proxy": "http://localhost:3001",
     "dependencies": {
         "@auth0/auth0-react": "^1.11.0",
         "@emotion/react": "^11.10.4",

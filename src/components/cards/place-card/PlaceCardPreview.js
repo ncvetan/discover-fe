@@ -1,20 +1,18 @@
 import React from 'react';
 
 const PlaceCardPreview = React.forwardRef((props, ref) => {
-    const { address, attributes, name, id } = props.result;
+    const { address, attributes, name } = props.result;
 
     function handleClick() {
-        props.setOpenId(id);
+        props.setOpenId(props.result._id);
         props.setDetailsPageOpen(true);
     }
 
     const attributesItems = attributes.map((attribute, i) => (
-        <li className="list-item" key={`${id}-attr-${i}`}>
+        <li className="list-item" key={`${props.result._id}-attr-${i}`}>
             {attribute}
         </li>
     ));
-
-    // Loading photos uses a client-side API Key. This API Key is intentionally exposed and restricted to Discover's domain.
 
     const placeBody = (
         <button

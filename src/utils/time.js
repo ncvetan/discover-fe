@@ -29,18 +29,42 @@ function minutesToFormattedTime(time) {
     let suffix;
     720 <= time && time < 1440 ? (suffix = 'PM') : (suffix = 'AM');
 
-    if (time > 720) {
-        time -= 720;
-    }
+    time = time > 720 ? (time -= 720) : time;
 
     const hours = Math.floor(time / 60);
     let minutes = Math.floor(time % 60);
 
-    if (minutes < 10) {
-        minutes = '0' + minutes;
-    }
+    minutes = minutes < 10 ? '0' + minutes : minutes;
 
     return `${hours}:${minutes}${suffix}`;
+}
+
+const numToDay = {
+    0: 'sun',
+    1: 'mon',
+    2: 'tue',
+    3: 'wed',
+    4: 'thu',
+    5: 'fri',
+    6: 'sat',
+};
+
+// TODO: Test this function
+function checkIfOpen(hours) {
+    let open = false;
+    let date = new Date();
+    let dayOfWeek = numToDay[date.getDay()];
+    date = date.toString();
+    let time = date.slice(16, 21);
+    time = parseInt(time.slice(0, 2)) * 60 + parseInt(time.slice(3, 5));
+    let hoursArray = hours[dayOfWeek];
+
+    for (let i = 0; i < hours.length; i++) {
+        if (hoursArray[i].start < time < hoursArray[i].end) {
+            open = true;
+        }
+    }
+    return open;
 }
 
 export { formatHoursArr };

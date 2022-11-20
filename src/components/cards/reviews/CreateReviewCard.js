@@ -85,6 +85,7 @@ function CreateReviewCard(props) {
                         name="text-feedback"
                         value={Number(rating)}
                         onChange={(e) => setRating(e.target.value)}
+                        min={1}
                         max={10}
                         precision={1}
                         disabled={!isAuthenticated}
