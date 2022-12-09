@@ -3,6 +3,7 @@ import CategoryPage from './components/pages/CategoryPage';
 import Footer from './components/footer/Footer';
 import Navbar from './components/nav/Navbar';
 import ResultsPage from './components/pages/ResultsPage';
+import CreatePlaceCard from './components/pages/CreatePlace';
 
 function App() {
     const [loggedIn, setLoggedIn] = useState(false);
@@ -26,6 +27,7 @@ function App() {
                     searchCategory={searchCategory}
                 />
             )}
+            
             <Navbar loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
             <Footer />
         </main>

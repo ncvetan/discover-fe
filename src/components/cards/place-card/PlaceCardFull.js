@@ -48,13 +48,19 @@ function PlaceCard(props) {
                         }}
                         className={`w-72 h-32 rounded-md border-white border-4 bg-center bg-cover`}
                     />
+                    {data.address &&
                     <p>{`${data.address.streetNumber} ${
                         data.address.streetName
-                    } ${data.address.unit ? `#${data.address.unit}` : ''}`}</p>
-                    <p>{`${data.address.city}, ${data.address.postalCode} ${data.address.countryCode}`}</p>
+                    } ${data.address.unit ? `#${data.address.unit}` : ''}`}</p> &&
+                    <p>{`${data.address.city}, ${data.address.postalCode} ${data.address.countryCode}`}</p> &&
                     <p>{`${data.description}`}</p>
+                    }
+                    {data.hours && 
                     <Hours hours={data.hours} />
+                    }
+                    {data.hours &&                    
                     <Attributes attributes={data.attributes} />
+                    }
                     <button
                         className="bg-white text-black rounded-md w-32"
                         onClick={() => setReviewsCardOpen(true)}

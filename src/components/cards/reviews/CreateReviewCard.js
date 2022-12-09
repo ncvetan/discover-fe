@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { api } from '../../../api/axios';
 import { useAuth0 } from '@auth0/auth0-react';
 
-const DESCRIPTION_REGEX = /^[a-zA-Z0-9$!?()%\s.]{1,1000}$/;
+const DESCRIPTION_REGEX = /^[a-zA-Z0-9$!?()%:;\s.]{1,1000}$/;
 
 function CreateReviewCard(props) {
     const userRef = useRef();

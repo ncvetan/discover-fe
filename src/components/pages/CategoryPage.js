@@ -17,7 +17,11 @@ function CategoryPage(props) {
                     logo={EntertainmentIcon}
                     category="entertainment"
                 />
-                <CategoryCard {...props} logo={FoodIcon} category="food" />
+                <CategoryCard 
+                    {...props} 
+                    logo={FoodIcon} 
+                    category="food" 
+                />
                 <CategoryCard
                     {...props}
                     logo={ShoppingIcon}
@@ -26,7 +30,7 @@ function CategoryPage(props) {
                 <CategoryCard
                     {...props}
                     logo={LandmarksIcon}
-                    category="landmarks"
+                    category="landmark"
                 />
             </div>
         </div>

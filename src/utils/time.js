@@ -1,3 +1,5 @@
+import { Result } from "postcss";
+
 // Iterates through an array containing start and end times for a business' hours, allowing for multiple ranges of time throughout a day
 function formatHoursArr(hoursArray) {
     let hoursString = '';
@@ -27,6 +29,9 @@ function parseHours(startTime, endTime) {
 // Takes the time in total number of minutes and properly formats it HH:MM.
 function minutesToFormattedTime(time) {
     let suffix;
+
+    if (time === 0) return "12:00AM";
+
     720 <= time && time < 1440 ? (suffix = 'PM') : (suffix = 'AM');
 
     time = time > 720 ? (time -= 720) : time;
@@ -37,6 +42,30 @@ function minutesToFormattedTime(time) {
     minutes = minutes < 10 ? '0' + minutes : minutes;
 
     return `${hours}:${minutes}${suffix}`;
+}
+
+function formattedTimeToMinutes(time) {
+    
+    if (time === "12:00AM") return 0;
+    if (time === "12:00PM") return 720;
+
+    let result = 0
+    const suffix = time.slice(-2);
+    const timeExceptSuffix = time.slice(0, -2)
+    const arrayHHMM = timeExceptSuffix.split(":");
+
+    if (suffix === 'AM')
+    {
+        result += Number(arrayHHMM[0]) * 60
+    }
+    else if (suffix === 'PM')
+    {
+        result += (Number(arrayHHMM[0]) * 60) + (12 * 60);
+    }
+
+    result += Number(arrayHHMM[1]);
+
+    return result;
 }
 
 const numToDay = {
@@ -67,4 +96,4 @@ function checkIfOpen(hours) {
     return open;
 }
 
-export { formatHoursArr };
+export { formatHoursArr, formattedTimeToMinutes };
