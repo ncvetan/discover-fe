@@ -6,7 +6,7 @@ function Hours(props) {
 
     return (
         <div className="flex flex-col">
-            <p>Hours:</p>
+            <p className='font-bold'>Hours:</p>
             <p>{`Sunday: ${formatHoursArr(hours.sun)}`}</p>
             <p>{`Monday: ${formatHoursArr(hours.mon)}`}</p>
             <p>{`Tuesday: ${formatHoursArr(hours.tue)}`}</p>
