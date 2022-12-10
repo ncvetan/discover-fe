@@ -8,12 +8,12 @@ function Attributes(props) {
     ));
 
     return (
-        <>
+        <div className='flex flex-col'>
             <p className="font-bold">Attributes:</p>
-            <ul className="grid grid-cols-2 gap-x-6 list-disc">
+            <ul className="grid grid-cols-2 gap-x-6 list-disc list-inside">
                 {attributesItems}
             </ul>
-        </>
+        </div>
     );
 }
 

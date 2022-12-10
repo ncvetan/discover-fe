@@ -6,7 +6,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { api } from '../../../api/axios';
 import { useAuth0 } from '@auth0/auth0-react';
 
-const DESCRIPTION_REGEX = /^[a-zA-Z0-9$!?()%:;\s.]{1,1000}$/;
 
 function CreateReviewCard(props) {
     const userRef = useRef();
@@ -29,7 +28,7 @@ function CreateReviewCard(props) {
 
     useEffect(() => {
         setCharCount(1000 - description.length);
-        setValidDescription(DESCRIPTION_REGEX.test(description));
+        setValidDescription((charCount <= 1000) ? true : false);
     }, [description]);
 
     async function handleSubmit(e) {

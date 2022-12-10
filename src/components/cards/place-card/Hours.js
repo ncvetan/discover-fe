@@ -7,13 +7,26 @@ function Hours(props) {
     return (
         <div className="flex flex-col">
             <p className="font-bold">Hours:</p>
-            <p>{`Sunday: ${formatHoursArr(hours.sun)}`}</p>
-            <p>{`Monday: ${formatHoursArr(hours.mon)}`}</p>
-            <p>{`Tuesday: ${formatHoursArr(hours.tue)}`}</p>
-            <p>{`Wednesday: ${formatHoursArr(hours.wed)}`}</p>
-            <p>{`Thursday: ${formatHoursArr(hours.thu)}`}</p>
-            <p>{`Friday: ${formatHoursArr(hours.fri)}`}</p>
-            <p>{`Saturday: ${formatHoursArr(hours.sat)}`}</p>
+            <div className='flex gap-2'>
+                <div>
+                    <p>{`Sunday:`}</p>
+                    <p>{`Monday:`}</p>
+                    <p>{`Tuesday:`}</p>
+                    <p>{`Wednesday:`}</p>
+                    <p>{`Thursday:`}</p>
+                    <p>{`Friday:`}</p>
+                    <p>{`Saturday:`}</p>
+                </div>
+                <div>
+                    <p>{`${formatHoursArr(hours.sun)}`}</p>
+                    <p>{`${formatHoursArr(hours.mon)}`}</p>
+                    <p>{`${formatHoursArr(hours.tue)}`}</p>
+                    <p>{`${formatHoursArr(hours.wed)}`}</p>
+                    <p>{`${formatHoursArr(hours.thu)}`}</p>
+                    <p>{`${formatHoursArr(hours.fri)}`}</p>
+                    <p>{`${formatHoursArr(hours.sat)}`}</p>
+                </div>
+            </div>
         </div>
     );
 }
