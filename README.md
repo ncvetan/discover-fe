@@ -18,7 +18,7 @@ New functionality is currently being planned and will be implemented in the near
 
 ### `npm start`
 
-This will run the app in development mode, which can then be accessed in the browser by opening [http://localhost:3000](http://localhost:3000)\
+This will run the app in development mode, which can then be accessed in the browser by opening [http://localhost:3000](http://localhost:3000)
 
 ### `npm run build`
 
