@@ -27,7 +27,6 @@ function App() {
                     searchCategory={searchCategory}
                 />
             )}
-            
             <Navbar loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
             <Footer />
         </main>

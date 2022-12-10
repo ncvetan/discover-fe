@@ -9,7 +9,7 @@ function Attributes(props) {
 
     return (
         <>
-            <p className='font-bold'>Attributes:</p>
+            <p className="font-bold">Attributes:</p>
             <ul className="grid grid-cols-2 gap-x-6 list-disc">
                 {attributesItems}
             </ul>

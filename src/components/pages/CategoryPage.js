@@ -17,11 +17,7 @@ function CategoryPage(props) {
                     logo={EntertainmentIcon}
                     category="entertainment"
                 />
-                <CategoryCard 
-                    {...props} 
-                    logo={FoodIcon} 
-                    category="food" 
-                />
+                <CategoryCard {...props} logo={FoodIcon} category="food" />
                 <CategoryCard
                     {...props}
                     logo={ShoppingIcon}
