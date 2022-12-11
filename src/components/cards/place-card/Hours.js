@@ -7,7 +7,7 @@ function Hours(props) {
     return (
         <div className="flex flex-col">
             <p className="font-bold">Hours:</p>
-            <div className='flex gap-2'>
+            <div className="flex gap-2">
                 <div>
                     <p>{`Sunday:`}</p>
                     <p>{`Monday:`}</p>

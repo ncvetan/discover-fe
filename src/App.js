@@ -27,7 +27,6 @@ function App() {
                     searchCategory={searchCategory}
                 />
             )}
-            <CreatePlaceCard></CreatePlaceCard>
             <Navbar loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
             <Footer />
         </main>

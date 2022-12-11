@@ -1,13 +1,27 @@
-import React, { useState, useRef, useCallback } from 'react';
+import React, { useState, useRef, useCallback, useEffect } from 'react';
 import LoadingSymbol from '../utility-components/LoadingSymbol';
 import PlaceCard from '../cards/place-card/PlaceCardFull';
 import PlaceCardPreview from '../cards/place-card/PlaceCardPreview';
 import usePlaces from '../../hooks/usePlaces';
+import useScrollBlock from '../../hooks/useScrollBlock'
 
 function ResultsPage(props) {
     const [openId, setOpenId] = useState('');
     const [detailsPageOpen, setDetailsPageOpen] = useState(false);
     const [pageNum, setPageNum] = useState(1);
+
+    const [blockScroll, allowScroll] = useScrollBlock();
+
+    // useEffect(() => {
+    //     if (detailsPageOpen){
+    //         blockScroll();
+    //     }
+    //     else{
+    //         allowScroll();
+    //     }
+
+    // }, [detailsPageOpen])
+    
 
     const { isLoading, isError, error, results, hasNextPage } = usePlaces(
         props.searchCategory,
@@ -67,9 +81,16 @@ function ResultsPage(props) {
 
     return (
         <>
-            <div className="flex flex-col items-center">
-                <div className="flex flex-wrap md:w-4/5 lg:w-2/3">
-                    {content}
+            <div
+                className={
+                    detailsPageOpen ? 'blur-md opacity-50' : 'visible'
+                }
+            >
+                <div className="flex flex-col items-center">
+                    <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+
+                        {content}
+                    </div>
                 </div>
             </div>
             {isLoading && <LoadingSymbol />}

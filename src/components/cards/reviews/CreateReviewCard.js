@@ -6,7 +6,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { api } from '../../../api/axios';
 import { useAuth0 } from '@auth0/auth0-react';
 
-
 function CreateReviewCard(props) {
     const userRef = useRef();
     const errRef = useRef();
@@ -28,7 +27,7 @@ function CreateReviewCard(props) {
 
     useEffect(() => {
         setCharCount(1000 - description.length);
-        setValidDescription((charCount <= 1000) ? true : false);
+        setValidDescription(charCount <= 1000 ? true : false);
     }, [description]);
 
     async function handleSubmit(e) {
@@ -66,8 +65,8 @@ function CreateReviewCard(props) {
     }
 
     return (
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 mt-16 h-screen w-full bg-white bg-opacity-50 backdrop-blur-sm flex items-center flex-col">
-            <div className="mt-8 h-auto w-auto max-w-1/2 flex flex-col m-2 p-2 items-center bg-primary-green rounded-2xl shadow-md text-white">
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 mt-16 h-screen w-full flex items-center flex-col">
+            <div className="mt-8 h-auto w-auto md:w-2/3 lg:w-1/2 flex flex-col m-2 p-2 items-center bg-primary-green rounded-2xl shadow-md text-white">
                 <p ref={errRef} className="text-red-600">
                     {errMsg}
                 </p>
