@@ -3,25 +3,11 @@ import LoadingSymbol from '../utility-components/LoadingSymbol';
 import PlaceCard from '../cards/place-card/PlaceCardFull';
 import PlaceCardPreview from '../cards/place-card/PlaceCardPreview';
 import usePlaces from '../../hooks/usePlaces';
-import useScrollBlock from '../../hooks/useScrollBlock'
 
 function ResultsPage(props) {
     const [openId, setOpenId] = useState('');
     const [detailsPageOpen, setDetailsPageOpen] = useState(false);
     const [pageNum, setPageNum] = useState(1);
-
-    const [blockScroll, allowScroll] = useScrollBlock();
-
-    // useEffect(() => {
-    //     if (detailsPageOpen){
-    //         blockScroll();
-    //     }
-    //     else{
-    //         allowScroll();
-    //     }
-
-    // }, [detailsPageOpen])
-    
 
     const { isLoading, isError, error, results, hasNextPage } = usePlaces(
         props.searchCategory,
