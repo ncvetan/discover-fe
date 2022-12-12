@@ -27,6 +27,3 @@ yarn-error.log*
 .eslintrc.js
 .prettierignore
 .prettierrc.json
-
-# Category Icons
-/src/assets/category-icons/
