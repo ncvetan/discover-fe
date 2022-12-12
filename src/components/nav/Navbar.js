@@ -11,7 +11,7 @@ function Navbar() {
             <div className="flex shadow-md w-full h-16 fixed top-0 left-0 items-center justify-between bg-white">
                 <input
                     type="image"
-                    className="h-4/5 md:h-full p-1"
+                    className="h-1/2 sm:h-4/5 md:h-full p-1"
                     src={DiscoverLogo}
                     alt="Discover Logo that returns the website to the homepage when clicked"
                     onClick={() => window.location.reload(false)}
@@ -27,7 +27,7 @@ function Navbar() {
                     )}
                     {user && !isLoading && (
                         <button
-                            className="bg-primary-green text-white text-lg font-semibold rounded-lg shadow-sm hover:shadow-md px-2 py-1"
+                            className="text-xs sm:text-lg bg-primary-green text-white font-semibold rounded-lg shadow-sm hover:shadow-md px-2 py-1"
                             onClick={() => logout()}
                         >
                             Log out
