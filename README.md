@@ -4,6 +4,8 @@
 
 The home page displays different categories that can be selected, which will bring up a curated list of things to do around you. Upon selection of one of the listed items, more information will be displayed. From here you can see reviews written by other users. You can also submit your own review!
 
+The repository for the backend code can be found here: [Discover Backend](https://github.com/ncvetan/discover-be)
+
 ## Upcoming Features:
 
 New functionality is currently being planned and will be implemented in the near future. This includes...
