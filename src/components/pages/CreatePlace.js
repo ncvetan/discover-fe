@@ -38,7 +38,7 @@ function CreatePlaceCard(props) {
         try {
             const token = await getAccessTokenSilently();
             const response = await api.post(
-                `/explore/places/create`,
+                `${process.env.REACT_APP_SERVER_URL}/explore/places/create`,
                 JSON.stringify({
                     name: name,
                     category: category,

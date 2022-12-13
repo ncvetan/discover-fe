@@ -15,7 +15,7 @@ function PlaceCard(props) {
     const [createReviewCardOpen, setCreateReviewCardOpen] = useState(false);
 
     async function getPlaceDetails() {
-        const response = await api.get(`/explore/places/${props.openId}`, {
+        const response = await api.get(`${process.env.REACT_APP_SERVER_URL}/explore/places/${props.openId}`, {
             headers: { 'Content-Type': 'application/json' },
         });
         setData(response.data);

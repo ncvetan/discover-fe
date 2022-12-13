@@ -35,7 +35,7 @@ function CreateReviewCard(props) {
         try {
             const token = await getAccessTokenSilently();
             const response = await api.post(
-                `/explore/places/${props.openId}/reviews/create`,
+                `${process.env.REACT_APP_SERVER_URL}/explore/places/${props.openId}/reviews/create`,
                 JSON.stringify({
                     parentId: props.openId,
                     author: user.name,
