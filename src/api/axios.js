@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const api = axios.create({
-    baseURL: `${process.env.REACT_APP_SERVER_URI}`,
+    baseURL: 'https://discover-be-west.onrender.com',
 });
 
 export async function getPlaces(category, pageParam = 1, options = {}) {
