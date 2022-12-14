@@ -21,11 +21,12 @@ const PlaceCardPreview = React.forwardRef((props, ref) => {
             className="flex flex-1 min-w-max flex-col m-2 p-2 items-center gap-1 bg-primary-green rounded-2xl shadow-md text-white hover:scale-105 hover:duration-150"
         >
             <h1 className="text-xl">{result.name}</h1>
-            {result.address && (
-                <p>{`${result.address.streetNumber} ${
+            {result.address.streetName && (
+                <p>{`${result.address.streetNumber ? result.address.streetNumber : ''} ${
                     result.address.streetName
                 } ${result.address.unit ? '#' + result.address.unit : ''}`}</p>
             )}
+            
             <Rating
                 name="read-only"
                 value={Number(result.avgReviewScore)}

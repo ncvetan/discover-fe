@@ -38,7 +38,7 @@ function PlaceCard(props) {
                 className={
                     reviewsCardOpen
                         ? 'hidden'
-                        : 'absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 mt-16 h-full w-full flex items-center flex-col'
+                        : 'fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 mt-16 h-full w-full flex items-center flex-col'
                 }
             >
                 <div className="mt-8 h-auto w-auto md:w-2/3 lg:w-1/2 flex flex-col m-2 p-2 items-center gap-1 bg-primary-green rounded-2xl shadow-md text-white">
