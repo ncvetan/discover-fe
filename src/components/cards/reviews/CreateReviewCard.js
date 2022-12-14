@@ -65,7 +65,7 @@ function CreateReviewCard(props) {
     }
 
     return (
-        <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 mt-16 h-screen w-full flex items-center flex-col">
+        <div className="fixed inset-0 mt-16 h-auto w-full flex items-center flex-col overscroll-contain overflow-y-scroll mb-7">
             <div className="mt-8 h-auto w-auto md:w-2/3 lg:w-1/2 flex flex-col m-2 p-2 items-center bg-primary-green rounded-2xl shadow-md text-white">
                 <p ref={errRef} className="text-red-600">
                     {errMsg}

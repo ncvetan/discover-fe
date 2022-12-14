@@ -10,6 +10,7 @@ function App() {
     const [categoryPageOpen, setCategoryPageOpen] = useState(true);
     const [resultsPageOpen, setResultsPageOpen] = useState(false);
     const [searchCategory, setSearchCategory] = useState('');
+    const [detailsPageOpen, setDetailsPageOpen] = useState(false);
 
     return (
         <main>
@@ -21,14 +22,18 @@ function App() {
                     setSearchCategory={setSearchCategory}
                 />
             )}
+            <div className={detailsPageOpen ? 'overflow-hidden' : ''}>
             {resultsPageOpen && (
                 <ResultsPage
-                    setResultsPageOpen={setResultsPageOpen}
-                    searchCategory={searchCategory}
+                setResultsPageOpen={setResultsPageOpen}
+                searchCategory={searchCategory}
+                detailsPageOpen={detailsPageOpen}
+                setDetailsPageOpen={setDetailsPageOpen}
                 />
-            )}
+                )}
+            </div>
             <Navbar loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
-            <Footer />
+            <Footer/>
         </main>
     );
 }

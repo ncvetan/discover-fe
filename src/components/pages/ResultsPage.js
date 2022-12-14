@@ -6,7 +6,7 @@ import usePlaces from '../../hooks/usePlaces';
 
 function ResultsPage(props) {
     const [openId, setOpenId] = useState('');
-    const [detailsPageOpen, setDetailsPageOpen] = useState(false);
+    
     const [pageNum, setPageNum] = useState(1);
 
     const { isLoading, isError, error, results, hasNextPage } = usePlaces(
@@ -51,7 +51,7 @@ function ResultsPage(props) {
                     ref={lastPlaceRef}
                     result={result}
                     setOpenId={setOpenId}
-                    setDetailsPageOpen={setDetailsPageOpen}
+                    setDetailsPageOpen={props.setDetailsPageOpen}
                 />
             );
         }
@@ -60,33 +60,32 @@ function ResultsPage(props) {
                 key={`place.id-${i}`}
                 result={result}
                 setOpenId={setOpenId}
-                setDetailsPageOpen={setDetailsPageOpen}
+                setDetailsPageOpen={props.setDetailsPageOpen}
             />
         );
     });
 
     return (
-        <>
+        <div className='mb-7'>
             <div
                 className={
-                    detailsPageOpen ? 'blur-md opacity-50' : 'visible'
+                    props.detailsPageOpen ? 'blur-md opacity-50' : 'visible'
                 }
             >
                 <div className="flex flex-col items-center">
                     <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-
                         {content}
                     </div>
                 </div>
             </div>
             {isLoading && <LoadingSymbol />}
-            {detailsPageOpen && (
+            {props.detailsPageOpen && (
                 <PlaceCard
-                    setDetailsPageOpen={setDetailsPageOpen}
+                    setDetailsPageOpen={props.setDetailsPageOpen}
                     openId={openId}
                 />
             )}
-        </>
+        </div>
     );
 }
 
