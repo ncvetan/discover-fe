@@ -1,12 +1,12 @@
 import { React, useEffect, useState } from 'react';
 import { api } from '../../../api/axios';
+import Address from './Address';
 import Attributes from './Attributes';
 import CloseBtn from '../../utility-components/CloseButton';
 import CreateReviewCard from '../reviews/CreateReviewCard';
 import Hours from './Hours';
 import LoadingSymbol from '../../utility-components/LoadingSymbol';
 import ReviewsCard from '../reviews/ReviewsCard';
-import Address from './Address';
 
 function PlaceCard(props) {
     const [data, setData] = useState({});
@@ -15,9 +15,12 @@ function PlaceCard(props) {
     const [createReviewCardOpen, setCreateReviewCardOpen] = useState(false);
 
     async function getPlaceDetails() {
-        const response = await api.get(`${process.env.REACT_APP_SERVER_URL}/explore/places/${props.openId}`, {
-            headers: { 'Content-Type': 'application/json' },
-        });
+        const response = await api.get(
+            `${process.env.REACT_APP_SERVER_URL}/explore/places/${props.openId}`,
+            {
+                headers: { 'Content-Type': 'application/json' },
+            }
+        );
         setData(response.data);
         setIsLoading(false);
         return;
@@ -36,36 +39,37 @@ function PlaceCard(props) {
         <>
             <article
                 className={
-                    reviewsCardOpen
+                    (reviewsCardOpen || createReviewCardOpen)
                         ? 'hidden'
                         : 'fixed inset-0 mt-16 h-auto w-full flex items-center flex-col overscroll-contain overflow-y-scroll mb-7'
                 }
-            >   
-                    <div className="mt-8 h-auto w-auto md:w-2/3 lg:w-1/2 flex flex-col m-2 p-2 items-center gap-1 bg-primary-green rounded-2xl shadow-md text-white">
-                        <h1 className="text-xl font-bold">{data.name}</h1>
-                        { data.photoRef &&
-                            <div
-                                style={{
-                                    backgroundImage: `url('${`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=${data.photoRef}&key=${process.env.REACT_APP_GOOGLE_API_KEY}`}')`,
-                                }}
-                                className={`w-72 h-32 md:w-96 md:h-44 rounded-md border-white border-4 bg-center bg-cover`}
-                            />
-                        }
-                        {data.address && <Address address={data.address}/>}
-                        <p>{`${data.description}`}</p>
-                        <div className='flex flex-col gap-1'>
-                            {data.hours && <Hours hours={data.hours} />}
-                            {data.hours && <Attributes attributes={data.attributes} />}
-                        </div>
-                        <button
-                            className="bg-white text-black rounded-md w-32 mt-1"
-                            onClick={() => setReviewsCardOpen(true)}
-                        >
-                            See All Reviews
-                        </button>
+            >
+                <div className="mt-8 h-auto w-auto md:w-2/3 lg:w-1/2 flex flex-col m-2 p-2 items-center gap-1 bg-primary-green rounded-2xl shadow-md text-white">
+                    <h1 className="text-xl font-bold">{data.name}</h1>
+                    {data.photoRef && (
+                        <div
+                            style={{
+                                backgroundImage: `url('${`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=${data.photoRef}&key=${process.env.REACT_APP_GOOGLE_API_KEY}`}')`,
+                            }}
+                            className={`w-72 h-32 md:w-96 md:h-44 rounded-md border-white border-4 bg-center bg-cover`}
+                        />
+                    )}
+                    {data.address && <Address address={data.address} />}
+                    <p>{`${data.description}`}</p>
+                    <div className="flex flex-col gap-1">
+                        {data.hours && <Hours hours={data.hours} />}
+                        {data.hours && (
+                            <Attributes attributes={data.attributes} />
+                        )}
                     </div>
-                    <CloseBtn clickProp={props.setDetailsPageOpen} />
-                
+                    <button
+                        className="bg-white text-black rounded-md w-32 mt-1"
+                        onClick={() => setReviewsCardOpen(true)}
+                    >
+                        See All Reviews
+                    </button>
+                </div>
+                <CloseBtn clickProp={props.setDetailsPageOpen} />
             </article>
             {reviewsCardOpen && (
                 <ReviewsCard
