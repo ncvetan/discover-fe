@@ -6,6 +6,8 @@ The home page displays different categories that can be selected, which will bri
 
 The repository for the backend code can be found here: [Discover Backend](https://github.com/ncvetan/discover-be)
 
+![Discover Demo Gif](./discover-intro-gif.gif)
+
 ## Upcoming Features:
 
 New functionality is currently being planned and will be implemented in the near future. This includes...
@@ -14,7 +16,6 @@ New functionality is currently being planned and will be implemented in the near
 -   Profile page for editing user information, preferences and other settings
 -   Expand searches to include locations outside of Windsor-Essex
 -   Add a new category for upcoming events
--   Migrate application to Next.JS
 
 ## Local Installation and Set Up:
 
