@@ -16,7 +16,6 @@ New functionality is currently being planned and will be implemented in the near
 -   Profile page for editing user information, preferences and other settings
 -   Expand searches to include locations outside of Windsor-Essex
 -   Add a new category for upcoming events
--   Migrate application to Next.JS
 
 ## Local Installation and Set Up:
 
