@@ -23,17 +23,17 @@ function App() {
                 />
             )}
             <div className={detailsPageOpen ? 'overflow-hidden' : ''}>
-            {resultsPageOpen && (
-                <ResultsPage
-                setResultsPageOpen={setResultsPageOpen}
-                searchCategory={searchCategory}
-                detailsPageOpen={detailsPageOpen}
-                setDetailsPageOpen={setDetailsPageOpen}
-                />
+                {resultsPageOpen && (
+                    <ResultsPage
+                        setResultsPageOpen={setResultsPageOpen}
+                        searchCategory={searchCategory}
+                        detailsPageOpen={detailsPageOpen}
+                        setDetailsPageOpen={setDetailsPageOpen}
+                    />
                 )}
             </div>
             <Navbar loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
-            <Footer/>
+            <Footer />
         </main>
     );
 }

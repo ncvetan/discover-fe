@@ -66,7 +66,10 @@ function ReviewsCard(props) {
                 <h1 className="text-xl pb-1">{`Reviews for ${props.name}`}</h1>
                 <button
                     className="bg-white text-black rounded-md w-32"
-                    onClick={() => props.setCreateReviewPageOpen(true)}
+                    onClick={() => {
+                        props.setCreateReviewPageOpen(true);
+                        props.setReviewsPageOpen(false);
+                    }}
                 >
                     Create Review
                 </button>

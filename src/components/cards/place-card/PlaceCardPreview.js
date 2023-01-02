@@ -22,11 +22,15 @@ const PlaceCardPreview = React.forwardRef((props, ref) => {
         >
             <h1 className="text-xl">{result.name}</h1>
             {result.address.streetName && (
-                <p>{`${result.address.streetNumber ? result.address.streetNumber : ''} ${
-                    result.address.streetName
-                } ${result.address.unit ? '#' + result.address.unit : ''}`}</p>
+                <p>{`${
+                    result.address.streetNumber
+                        ? result.address.streetNumber
+                        : ''
+                } ${result.address.streetName} ${
+                    result.address.unit ? '#' + result.address.unit : ''
+                }`}</p>
             )}
-            
+
             <Rating
                 name="read-only"
                 value={Number(result.avgReviewScore)}

@@ -1,12 +1,12 @@
-import React, { useState, useRef, useCallback, useEffect } from 'react';
+import React, { useState, useRef, useCallback } from 'react';
 import LoadingSymbol from '../utility-components/LoadingSymbol';
 import PlaceCard from '../cards/place-card/PlaceCardFull';
 import PlaceCardPreview from '../cards/place-card/PlaceCardPreview';
 import usePlaces from '../../hooks/usePlaces';
 
 function ResultsPage(props) {
-    const [openId, setOpenId] = useState('');
     
+    const [openId, setOpenId] = useState('');
     const [pageNum, setPageNum] = useState(1);
 
     const { isLoading, isError, error, results, hasNextPage } = usePlaces(
@@ -66,7 +66,7 @@ function ResultsPage(props) {
     });
 
     return (
-        <div className='mb-7'>
+        <div className="mb-7">
             <div
                 className={
                     props.detailsPageOpen ? 'blur-md opacity-50' : 'visible'
@@ -78,7 +78,7 @@ function ResultsPage(props) {
                     </div>
                 </div>
             </div>
-            {isLoading && <LoadingSymbol />}
+            {isLoading && <LoadingSymbol/>}
             {props.detailsPageOpen && (
                 <PlaceCard
                     setDetailsPageOpen={props.setDetailsPageOpen}

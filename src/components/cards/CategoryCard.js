@@ -7,17 +7,15 @@ function CategoryCard(props) {
         props.setSearchCategory(`${props.category}`);
     }
 
+    const Icon = props.logo;
+
     return (
         <>
             <button
                 className="bg-primary-green text-white w-2/5 aspect-square capitalize rounded-3xl hover:scale-105 hover:duration-150 shadow-md flex flex-col items-center justify-center"
                 onClick={handleButton}
             >
-                <img
-                    src={props.logo}
-                    alt={`Icon representing ${props.category}`}
-                    className="text-white h-1/2 pb-1"
-                />
+                <Icon className="h-1/2 pb-1"/>
                 <p className="text-lg font-bold pt-1">{props.category}</p>
             </button>
         </>

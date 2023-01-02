@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Rating } from '@mui/material';
 import CloseBtn from '../../utility-components/CloseButton';
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
@@ -7,9 +7,7 @@ import { api } from '../../../api/axios';
 import { useAuth0 } from '@auth0/auth0-react';
 
 function CreateReviewCard(props) {
-    const userRef = useRef();
-    const errRef = useRef();
-
+    
     const { user, isAuthenticated, getAccessTokenSilently } = useAuth0();
 
     const [description, setDescription] = useState('');
@@ -19,16 +17,11 @@ function CreateReviewCard(props) {
     const [validDescription, setValidDescription] = useState(false);
 
     const [errMsg, setErrMsg] = useState('');
-    const [success, setSuccess] = useState(false);
-
-    useEffect(() => {
-        userRef.current.focus();
-    }, []);
 
     useEffect(() => {
         setCharCount(1000 - description.length);
         setValidDescription(charCount <= 1000 ? true : false);
-    }, [description]);
+    }, [description, charCount]);
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -50,8 +43,6 @@ function CreateReviewCard(props) {
                     withCredentials: true,
                 }
             );
-            console.log(response);
-            setSuccess(true);
             setRating(5);
             setDescription('');
         } catch (err) {
@@ -60,14 +51,13 @@ function CreateReviewCard(props) {
             } else {
                 setErrMsg('Creating review failed');
             }
-            errRef.current.focus();
         }
     }
 
     return (
         <div className="fixed inset-0 mt-16 h-auto w-full flex items-center flex-col overscroll-contain overflow-y-scroll mb-7">
             <div className="mt-8 h-auto w-auto md:w-2/3 lg:w-1/2 flex flex-col m-2 p-2 items-center bg-primary-green rounded-2xl shadow-md text-white">
-                <p ref={errRef} className="text-red-600">
+                <p className="text-red-600">
                     {errMsg}
                 </p>
                 <h1 className="text-xl pb-1">Create Review</h1>
@@ -93,7 +83,6 @@ function CreateReviewCard(props) {
                         type="text"
                         id="description"
                         className="text-black mb-1 h-36 w-64 break-words p-1"
-                        ref={userRef}
                         autoComplete="off"
                         onChange={(e) => setDescription(e.target.value)}
                         value={description}
