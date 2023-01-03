@@ -31,7 +31,7 @@ function CreateReviewCard(props) {
                 `${process.env.REACT_APP_SERVER_URL}/explore/places/${props.openId}/reviews/create`,
                 JSON.stringify({
                     parentId: props.openId,
-                    author: user.name,
+                    author: user[`${process.env.REACT_APP_CLIENT_URL}/username`],
                     rating: rating,
                     description: description.trim(),
                 }),
