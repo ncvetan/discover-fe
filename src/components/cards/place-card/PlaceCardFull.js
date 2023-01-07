@@ -49,7 +49,7 @@ function PlaceCard(props) {
                     {data.photoRef && (
                         <div
                             style={{
-                                backgroundImage: `url('${`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=${data.photoRef}&key=${process.env.REACT_APP_GOOGLE_API_KEY}`}')`,
+                                backgroundImage: `url('data:${data.photoType};base64,${data.photo}')`,
                             }}
                             className={`w-72 h-32 md:w-96 md:h-44 rounded-md border-white border-4 bg-center bg-cover`}
                         />
