@@ -9,12 +9,11 @@ const domain = process.env.REACT_APP_AUTH0_DOMAIN;
 const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID;
 const audience = process.env.REACT_APP_AUTH0_AUDIENCE;
 
-const queryClient = new QueryClient()
+const queryClient = new QueryClient();
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
-
         <Auth0Provider
             domain={domain}
             clientId={clientId}
@@ -22,7 +21,7 @@ root.render(
             audience={audience}
         >
             <QueryClientProvider client={queryClient}>
-                <App/>
+                <App />
             </QueryClientProvider>
         </Auth0Provider>
     </React.StrictMode>

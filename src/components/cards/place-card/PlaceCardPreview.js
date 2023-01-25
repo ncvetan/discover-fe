@@ -3,7 +3,6 @@ import { useQueryClient } from 'react-query';
 import { Rating } from '@mui/material';
 
 const PlaceCardPreview = React.forwardRef((props, ref) => {
-    
     const result = props.result;
     const queryClient = useQueryClient();
 

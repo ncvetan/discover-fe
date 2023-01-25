@@ -5,7 +5,6 @@ import PlaceCardPreview from '../cards/place-card/PlaceCardPreview';
 import usePlaces from '../../hooks/usePlaces';
 
 function ResultsPage(props) {
-    
     const [openId, setOpenId] = useState('');
     const [pageNum, setPageNum] = useState(1);
 
@@ -78,7 +77,7 @@ function ResultsPage(props) {
                     </div>
                 </div>
             </div>
-            {isLoading && <LoadingSymbol/>}
+            {isLoading && <LoadingSymbol />}
             {props.detailsPageOpen && (
                 <PlaceCard
                     setDetailsPageOpen={props.setDetailsPageOpen}

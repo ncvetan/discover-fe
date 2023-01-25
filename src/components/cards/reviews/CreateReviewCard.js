@@ -7,7 +7,6 @@ import { api } from '../../../api/axios';
 import { useAuth0 } from '@auth0/auth0-react';
 
 function CreateReviewCard(props) {
-    
     const { user, isAuthenticated, getAccessTokenSilently } = useAuth0();
 
     const [description, setDescription] = useState('');
@@ -31,7 +30,9 @@ function CreateReviewCard(props) {
                 `${process.env.REACT_APP_SERVER_URL}/explore/places/${props.openId}/reviews/create`,
                 JSON.stringify({
                     parentId: props.openId,
-                    author: user[`${process.env.REACT_APP_CLIENT_URL}/username`],
+                    author: user[
+                        `${process.env.REACT_APP_CLIENT_URL}/username`
+                    ],
                     rating: rating,
                     description: description.trim(),
                 }),
@@ -57,9 +58,7 @@ function CreateReviewCard(props) {
     return (
         <div className="fixed inset-0 mt-16 h-auto w-full flex items-center flex-col overscroll-contain overflow-y-scroll mb-7">
             <div className="mt-8 h-auto w-auto md:w-2/3 lg:w-1/2 flex flex-col m-2 p-2 items-center bg-primary-green rounded-2xl shadow-md text-white">
-                <p className="text-red-600">
-                    {errMsg}
-                </p>
+                <p className="text-red-600">{errMsg}</p>
                 <h1 className="text-xl pb-1">Create Review</h1>
                 {!isAuthenticated && (
                     <p>Only registered users can post a review.</p>

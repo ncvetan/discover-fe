@@ -1,10 +1,10 @@
 import React from 'react';
 import CategoryCard from '../cards/CategoryCard';
 
-import {ReactComponent as EntertainmentIcon} from '../../assets/category-icons/entertainment.svg';
-import {ReactComponent as FoodIcon} from '../../assets/category-icons/food.svg';
-import {ReactComponent as LandmarksIcon} from '../../assets/category-icons/landmarks.svg';
-import {ReactComponent as ShoppingIcon} from '../../assets/category-icons/shopping.svg';
+import { ReactComponent as EntertainmentIcon } from '../../assets/category-icons/entertainment.svg';
+import { ReactComponent as FoodIcon } from '../../assets/category-icons/food.svg';
+import { ReactComponent as LandmarksIcon } from '../../assets/category-icons/landmarks.svg';
+import { ReactComponent as ShoppingIcon } from '../../assets/category-icons/shopping.svg';
 
 function CategoryPage(props) {
     return (
@@ -18,10 +18,7 @@ function CategoryPage(props) {
                     logo={EntertainmentIcon}
                     category="entertainment"
                 />
-                <CategoryCard 
-                    {...props} 
-                    logo={FoodIcon} 
-                    category="food" />
+                <CategoryCard {...props} logo={FoodIcon} category="food" />
                 <CategoryCard
                     {...props}
                     logo={ShoppingIcon}

@@ -10,38 +10,41 @@ import LoadingSymbol from '../../utility-components/LoadingSymbol';
 import ReviewsCard from '../reviews/ReviewsCard';
 
 function PlaceCard(props) {
-
-    const queryClient = useQueryClient()
-    const { isLoading, isError, error, data, isFetching } = useQuery('placeDetails', () => getPlaceDetails(props.openId))
+    const queryClient = useQueryClient();
+    const { isLoading, isError, isFetching, data } = useQuery(
+        'placeDetails',
+        () => getPlaceDetails(props.openId)
+    );
 
     const [reviewsCardOpen, setReviewsCardOpen] = useState(false);
     const [createReviewCardOpen, setCreateReviewCardOpen] = useState(false);
 
     if (isLoading || isFetching) {
         return (
-            <div className='fixed inset-0 mt-16 h-auto w-auto'>
-                <LoadingSymbol/>
-            </div>);
+            <div className="fixed inset-0 mt-16 h-auto w-auto">
+                <LoadingSymbol />
+            </div>
+        );
     }
 
     if (isError) {
-        return <p>An error has been encountered...</p>;
+        return <p>An error has been encountered, please retry later...</p>;
     }
 
-    console.log(data)
+    console.log(data);
 
     return (
         <>
             <article
                 className={
-                    (reviewsCardOpen || createReviewCardOpen)
+                    reviewsCardOpen || createReviewCardOpen
                         ? 'hidden'
                         : 'fixed inset-0 mt-16 h-auto w-full flex items-center flex-col overscroll-contain overflow-y-scroll mb-7'
                 }
             >
                 <div className="mt-8 h-auto w-auto md:w-2/3 lg:w-1/2 flex flex-col m-2 p-2 items-center gap-1 bg-primary-green rounded-2xl shadow-md text-white">
                     <h1 className="text-xl font-bold">{data.name}</h1>
-                    {data.photoRef && (
+                    {'photo' in data && (
                         <div
                             style={{
                                 backgroundImage: `url('data:${data.photoType};base64,${data.photo}')`,
