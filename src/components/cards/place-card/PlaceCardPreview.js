@@ -1,10 +1,14 @@
 import React from 'react';
+import { useQueryClient } from 'react-query';
 import { Rating } from '@mui/material';
 
 const PlaceCardPreview = React.forwardRef((props, ref) => {
+    
     const result = props.result;
+    const queryClient = useQueryClient();
 
     function handleClick() {
+        // if (props.result._id !== props.openId) queryClient.invalidateQueries({ queryKey: ['placeDetails'] });
         props.setOpenId(props.result._id);
         props.setDetailsPageOpen(true);
     }

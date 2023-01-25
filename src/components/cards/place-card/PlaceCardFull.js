@@ -1,5 +1,6 @@
-import { React, useEffect, useState } from 'react';
-import { api } from '../../../api/axios';
+import { React, useState } from 'react';
+import { useQuery, useQueryClient } from 'react-query';
+import { getPlaceDetails } from '../../../api/axios';
 import Address from './Address';
 import Attributes from './Attributes';
 import CloseBtn from '../../utility-components/CloseButton';
@@ -9,32 +10,26 @@ import LoadingSymbol from '../../utility-components/LoadingSymbol';
 import ReviewsCard from '../reviews/ReviewsCard';
 
 function PlaceCard(props) {
-    const [data, setData] = useState({});
-    const [isLoading, setIsLoading] = useState(true);
+
+    const queryClient = useQueryClient()
+    const { isLoading, isError, error, data, isFetching } = useQuery('placeDetails', () => getPlaceDetails(props.openId))
+
     const [reviewsCardOpen, setReviewsCardOpen] = useState(false);
     const [createReviewCardOpen, setCreateReviewCardOpen] = useState(false);
 
-    async function getPlaceDetails() {
-        const response = await api.get(
-            `${process.env.REACT_APP_SERVER_URL}/explore/places/${props.openId}`,
-            {
-                headers: { 'Content-Type': 'application/json' },
-            }
-        );
-        setData(response.data);
-        setIsLoading(false);
-        return;
+    if (isLoading || isFetching) {
+        return (
+            <div className='fixed inset-0 mt-16 h-auto w-auto'>
+                <LoadingSymbol/>
+            </div>);
     }
 
-    useEffect(() => {
-        getPlaceDetails();
-    }, []);
-
-    if (isLoading) {
-        return <LoadingSymbol />;
+    if (isError) {
+        return <p>An error has been encountered...</p>;
     }
 
-    // Loading photo's uses a client-side API Key, which is publicly exposed. This API Key is restricted to the app's domain.
+    console.log(data)
+
     return (
         <>
             <article
